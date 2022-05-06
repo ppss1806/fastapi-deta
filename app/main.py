@@ -19,9 +19,10 @@ async def root():
 @app.get("/headers")
 async def get_headers(request: Request):
     item = {
-        "user-agent": request.headers['user-agent'],
-        "x-forwarded-for": request.headers['x-forwarded-for'],
-        "x-real-ip": request.headers['x-real-ip'],
+        "user_agent": request.headers['user-agent'],
+        "x_forwarded_for": request.headers['x-forwarded-for'],
+        "x_real_ip": request.headers['x-real-ip'],
+        "request_time": time.time(),
     }
     if os.getenv('DETA_RUNTIME', False):
         await async_db.insert(item)
