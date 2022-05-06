@@ -24,3 +24,9 @@ async def get_myip(request: Request):
         await async_db.insert(item)
 
     return item
+
+
+@app.get("/headers")
+async def get_headers(request: Request):
+
+    return request.headers
