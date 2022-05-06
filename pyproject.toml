@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "fastapi-deta"
+version = "0.1.0"
+description = ""
+authors = ["ppss1806 <ppss1806@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.76.0"
+deta = {version = "1.1.0a2", extras = ["async"]}
+
+[tool.poetry.dev-dependencies]
+uvicorn = "^0.17.6"
+autopep8 = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
