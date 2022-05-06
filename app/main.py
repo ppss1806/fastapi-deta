@@ -16,17 +16,14 @@ async def root():
     return "Hello World!"
 
 
-@app.get("/myip")
-async def get_myip(request: Request):
-    item = {"ip": request.client.host, "time": time.time()}
-
-    if os.getenv('DETA_RUNTIME', False):
-        await async_db.insert(item)
-
-    return item
-
-
 @app.get("/headers")
 async def get_headers(request: Request):
+    item = {
+        "user-agent": request.headers['user-agent'],
+        "x-forwarded-for": request.headers['x-forwarded-for'],
+        "x-real-ip": request.headers['x-real-ip'],
+    }
+    if os.getenv('DETA_RUNTIME', False):
+        await async_db.insert(item)
 
     return request.headers
